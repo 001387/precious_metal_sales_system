@@ -1,7 +1,5 @@
 package com.coding.sales.product;
 
-import java.math.BigDecimal;
-
 /**
  * 
  *@author yangshen
@@ -23,12 +21,6 @@ public class Product {
 	}
 	public void setPrdName(String prdName) {
 		this.prdName = prdName;
-	}
-	public String getPrdNumber() {
-		return productId;
-	}
-	public void setPrdNumber(String prdNumber) {
-		this.productId = prdNumber;
 	}
 	public int getUnit() {
 		return unit;
@@ -64,6 +56,18 @@ public class Product {
 	}
 	public Product() {
 		// TODO Auto-generated constructor stub
+	}
+	public Double getPrice() {
+		return price;
+	}
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+	public String getProductId() {
+		return productId;
+	}
+	public void setProductId(String productId) {
+		this.productId = productId;
 	}
 	
 }
