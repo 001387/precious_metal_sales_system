@@ -48,7 +48,7 @@ public class TransAmtCalcServiceTest {
 			TransAmtCalcService amtCalcService = new TransAmtCalcService();
 			
 			
-			 amtCalcService.updateMemberBonusPoints(memberInfo,product,paymentCommand,orderItemCommand,"");
+			 amtCalcService.dealProductTrans(memberInfo,product,paymentCommand,orderItemCommand,"");
 			
 			assertTrue(memberInfo.getBonusPoints()>bonusPoints);
 		}
@@ -66,7 +66,7 @@ public class TransAmtCalcServiceTest {
 			
 			TransAmtCalcService amtCalcService = new TransAmtCalcService();
 			
-			Map<String, Object> map = amtCalcService.updateMemberBonusPoints(memberInfo, product, paymentCommand, orderItemCommand,"9折券");
+			Map<String, Object> map = amtCalcService.dealProductTrans(memberInfo, product, paymentCommand, orderItemCommand,"9折券");
 			Double totprice = (Double) map.get("totalprice");
 			assertTrue(totprice/(2*0.9*1380)==1);
 		}

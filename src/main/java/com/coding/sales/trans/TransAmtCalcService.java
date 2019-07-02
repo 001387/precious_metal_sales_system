@@ -33,7 +33,7 @@ public class TransAmtCalcService {
 		return String.format("%.2f", totalPrice);
 	}
 	
-	 public Map<String, Object>  updateMemberBonusPoints(MemberInfo memberInfo, Product product, PaymentCommand paymentCommand, OrderItemCommand orderItemCommand, String discount){
+	 public Map<String, Object>  dealProductTrans(MemberInfo memberInfo, Product product, PaymentCommand paymentCommand, OrderItemCommand orderItemCommand, String discount){
 		    Map<String, Object> resultMap = new HashMap<String, Object>();
 			Double totalPrice = orderItemCommand.getAmount().doubleValue() * product.getPrice();
 			
