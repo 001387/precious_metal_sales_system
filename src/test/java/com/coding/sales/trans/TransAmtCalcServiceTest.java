@@ -1,13 +1,18 @@
 package com.coding.sales.trans;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.math.BigDecimal;
 
 import org.junit.Test;
 
 import com.coding.sales.input.OrderItemCommand;
+import com.coding.sales.input.PaymentCommand;
+import com.coding.sales.members.MemberInfo;
+import com.coding.sales.members.Members;
 import com.coding.sales.product.Product;
+import com.coding.sales.product.ProductsCache;
 
 /**
  *@author yangshen
@@ -26,5 +31,24 @@ public class TransAmtCalcServiceTest {
 			 product.setProductId("001001");
 			 
 			assertEquals(String.format("%.2f", 2*1000.00), transAmtCalcService.calculateTotalPrice(orderItemCommand, product));
+		}
+		
+		@Test
+		public void should_add_bonus_points_when_buy_the_product_use_account_blance() {
+			
+			OrderItemCommand orderItemCommand = new OrderItemCommand("001001", new BigDecimal(2.0));
+			
+			PaymentCommand paymentCommand = new PaymentCommand("余额支付", new BigDecimal(9800));
+			
+			Product product = ProductsCache.products.get("001001");
+			
+			MemberInfo memberInfo =  Members.getMemberInfo("6236609999");
+			int bonusPoints = memberInfo.getBonusPoints();
+			
+			TransAmtCalcService amtCalcService = new TransAmtCalcService();
+			
+			MemberInfo resultMemberInfo = amtCalcService.updateMemberBonusPoints(memberInfo,product,paymentCommand,orderItemCommand);
+			
+			assertNotEquals(bonusPoints, resultMemberInfo.getBonusPoints());
 		}
 }

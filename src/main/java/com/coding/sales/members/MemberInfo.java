@@ -1,5 +1,8 @@
 package com.coding.sales.members;
 
+import com.coding.constant.ProductItemConstant;
+import com.sun.org.apache.regexp.internal.REUtil;
+
 public class MemberInfo {
 	private String name;
 	private String level;
@@ -43,5 +46,21 @@ public class MemberInfo {
 
 	public void setBonusPoints(int bonusPoints) {
 		this.bonusPoints = bonusPoints;
+	}
+
+	public void addBonusProints(Double points) {
+		this.bonusPoints +=  points.intValue();
+		if (bonusPoints < 10000) {
+			return;
+		}
+		if (bonusPoints < 50000) {
+			setLevel(ProductItemConstant.MemberLevel.GOLD_CARD);
+			return;
+		}
+		if (bonusPoints < 100000) {
+			setLevel(ProductItemConstant.MemberLevel.PLATINUM_CARD);
+			return;
+		}
+		setLevel(ProductItemConstant.MemberLevel.DIANMONDS_CARD);
 	}
 }
