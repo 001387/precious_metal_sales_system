@@ -68,7 +68,11 @@ public class OrderRepresentation {
         this.discountCards = discountCards;
     }
 
-    @Override
+    public OrderRepresentation() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -186,4 +190,128 @@ public class OrderRepresentation {
 
         return result.toString();
     }
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(String memberNo) {
+		this.memberNo = memberNo;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
+	public String getOldMemberType() {
+		return oldMemberType;
+	}
+
+	public void setOldMemberType(String oldMemberType) {
+		this.oldMemberType = oldMemberType;
+	}
+
+	public String getNewMemberType() {
+		return newMemberType;
+	}
+
+	public void setNewMemberType(String newMemberType) {
+		this.newMemberType = newMemberType;
+	}
+
+	public int getMemberPointsIncreased() {
+		return memberPointsIncreased;
+	}
+
+	public void setMemberPointsIncreased(int memberPointsIncreased) {
+		this.memberPointsIncreased = memberPointsIncreased;
+	}
+
+	public int getMemberPoints() {
+		return memberPoints;
+	}
+
+	public void setMemberPoints(int memberPoints) {
+		this.memberPoints = memberPoints;
+	}
+
+	public List<OrderItemRepresentation> getItems() {
+		return items;
+	}
+
+	public void setItems(List<OrderItemRepresentation> items) {
+		this.items = items;
+	}
+
+	public BigDecimal getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(BigDecimal totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public List<DiscountItemRepresentation> getDiscounts() {
+		return discounts;
+	}
+
+	public void setDiscounts(List<DiscountItemRepresentation> discounts) {
+		this.discounts = discounts;
+	}
+
+	public BigDecimal getTotalDiscountPrice() {
+		return totalDiscountPrice;
+	}
+
+	public void setTotalDiscountPrice(BigDecimal totalDiscountPrice) {
+		this.totalDiscountPrice = totalDiscountPrice;
+	}
+
+	public BigDecimal getReceivables() {
+		return receivables;
+	}
+
+	public void setReceivables(BigDecimal receivables) {
+		this.receivables = receivables;
+	}
+
+	public List<PaymentRepresentation> getPayments() {
+		return payments;
+	}
+
+	public void setPayments(List<PaymentRepresentation> payments) {
+		this.payments = payments;
+	}
+
+	public List<String> getDiscountCards() {
+		return discountCards;
+	}
+
+	public void setDiscountCards(List<String> discountCards) {
+		this.discountCards = discountCards;
+	}
+
+	public static DecimalFormat getMoneyFormat() {
+		return MONEY_FORMAT;
+	}
 }
