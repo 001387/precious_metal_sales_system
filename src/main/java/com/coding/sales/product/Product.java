@@ -1,16 +1,19 @@
 package com.coding.sales.product;
+
+import java.math.BigDecimal;
+
 /**
  * 
  *@author yangshen
  * @date  2019年7月2日
  */
-public class ProductInfo {
+public class Product {
 		
 	private String prdName;
-	private String prdNumber;
+	private String productId;
 	private int unit;
 	private String unitName;
-	private Double price;
+	private BigDecimal price;
 	private String discount;
 	private String preferential;
 	
@@ -22,10 +25,10 @@ public class ProductInfo {
 		this.prdName = prdName;
 	}
 	public String getPrdNumber() {
-		return prdNumber;
+		return productId;
 	}
 	public void setPrdNumber(String prdNumber) {
-		this.prdNumber = prdNumber;
+		this.productId = prdNumber;
 	}
 	public int getUnit() {
 		return unit;
@@ -39,12 +42,6 @@ public class ProductInfo {
 	public void setUnitName(String unitName) {
 		this.unitName = unitName;
 	}
-	public Double getPrice() {
-		return price;
-	}
-	public void setPrice(Double price) {
-		this.price = price;
-	}
 	public String getPreferential() {
 		return preferential;
 	}
@@ -56,6 +53,20 @@ public class ProductInfo {
 	}
 	public void setDiscount(String discount) {
 		this.discount = discount;
+	}
+	public BigDecimal getPrice() {
+		return price;
+	}
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+	public Product(String prdName, String prdNumber, int unit, Double price, String discount,String preferential) {
+		this.prdName = prdName;
+		this.productId = prdNumber;
+		this.unit = unit;
+		this.price = new BigDecimal(price);
+		this.discount = discount;
+		this.preferential = preferential;
 	}
 	
 }
