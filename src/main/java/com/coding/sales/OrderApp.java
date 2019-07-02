@@ -55,7 +55,6 @@ public class OrderApp {
     	List<PaymentCommand> paymentCommands = command.getPayments();
     	List<String> discounts  = command.getDiscounts();
     	String discount = null;
-    	
     	for (String string : discounts) {
     		discount = string;
 		}
@@ -79,10 +78,10 @@ public class OrderApp {
     		orderItemRepresentations.add((OrderItemRepresentation) resultMap.get(CommonConstant.objectName.OBJECT_ORDERITEMREPRESENTATION));
     		discountItemRepresentations.add((DiscountItemRepresentation) resultMap.get(CommonConstant.objectName.OBJECT_DISCOUNTITEMREPRESENTATION));
     		paymentRepresentations.add((PaymentRepresentation) resultMap.get(CommonConstant.objectName.OBJECT_PAYMENTREPRESENTATION));
-    		if (((PaymentRepresentation)resultMap.get("paymentRepresentation")).getAmount().intValue()>0) {
-    			paymentRepresentations.add((PaymentRepresentation) resultMap.get("paymentRepresentation"));
+    		if (((PaymentRepresentation)resultMap.get(CommonConstant.objectName.OBJECT_PAYMENTREPRESENTATION)).getAmount().intValue()>0) {
+    			paymentRepresentations.add((PaymentRepresentation) resultMap.get(CommonConstant.objectName.OBJECT_PAYMENTREPRESENTATION));
 			}
-    		discountCards.add((String) resultMap.get("discountCard"));
+    		discountCards.add((String) resultMap.get(CommonConstant.objectName.OBJECT_DISCOUNTDOUBLE));
     		totalPrice = totalPrice+(Double)resultMap.get("totalPrice");
     		discountDouble = discountDouble+(Double)resultMap.get("discountDouble");
 		}

@@ -44,5 +44,6 @@ public class CommonConstant {
 		public static final String OBJECT_ORDERITEMREPRESENTATION= "orderItemRepresentation";
 		public static final String OBJECT_DISCOUNTITEMREPRESENTATION= "discountItemRepresentation";
 		public static final String OBJECT_PAYMENTREPRESENTATION= "paymentRepresentation";
+		public static final String OBJECT_DISCOUNTDOUBLE= "discountDouble";
 	}
 }
