@@ -24,4 +24,11 @@ public class ProductItemConstant {
 		
 	}
 	
+	public class MemberLevel{
+		public static final String COMMON_CARD= "普卡";
+		public static final String GOLD_CARD= "金卡";
+		public static final String PLATINUM_CARD= "白金卡";
+		public static final String DIANMONDS_CARD= "钻石卡";
+	}
+	
 }
