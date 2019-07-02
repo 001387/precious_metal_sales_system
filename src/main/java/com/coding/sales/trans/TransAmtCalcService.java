@@ -44,6 +44,7 @@ public class TransAmtCalcService {
 			Double totalPrice = orderItemCommand.getAmount().doubleValue() * product.getPrice();
 			Double discountDouble = 0.0;
 			String level = memberInfo.getLevel();
+			String discountCard = "";
 			if ( isCanDiscount(product, discount)) {
 				if (ProductItemConstant.ProdcutDiscount.DISCOUNT_90.equals(discount)) {
 					discountDouble = 0.9;
@@ -67,6 +68,7 @@ public class TransAmtCalcService {
 			resultMap.put("orderItemRepresentation", orderItemRepresentation);
 			resultMap.put("paymentRepresentation", paymentRepresentation);
 			resultMap.put("discountItemRepresentation", discountItemRepresentation);
+			resultMap.put("discountCard", discount);
 			
 			resultMap.put("totalPrice", totalPrice);
 			return resultMap;

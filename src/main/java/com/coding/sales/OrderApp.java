@@ -1,5 +1,6 @@
 package com.coding.sales;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -65,16 +66,21 @@ public class OrderApp {
     	for (PaymentCommand paymentCommand : paymentCommands) {
     		pCommand = paymentCommand;
 		}
-    	List<OrderItemRepresentation> orderItemRepresentations = null;
-    	List<DiscountItemRepresentation> discountItemRepresentations = null;
-    	List<PaymentRepresentation> paymentRepresentations = null;
+    	List<OrderItemRepresentation> orderItemRepresentations = new ArrayList<OrderItemRepresentation>();
+    	List<DiscountItemRepresentation> discountItemRepresentations = new ArrayList<DiscountItemRepresentation>();
+    	List<PaymentRepresentation> paymentRepresentations = new ArrayList<PaymentRepresentation>();
+    	List<String> discountCards = new ArrayList<String>();
+    	Double totalPrice =     0.0;
     	for (OrderItemCommand orderItemCommand : orderItemCommands) {
     		Map<String, Object> resultMap = transAmtCalcService.updateMemberBonusPoints(memberInfo, ProductsCache.products.get(orderItemCommand.getProduct()), pCommand, orderItemCommand, discount);
     		orderItemRepresentations.add((OrderItemRepresentation) resultMap.get("orderItemRepresentation"));
     		discountItemRepresentations.add((DiscountItemRepresentation) resultMap.get("discountItemRepresentation"));
     		paymentRepresentations.add((PaymentRepresentation) resultMap.get("paymentRepresentation"));
+    		discountCards.add((String) resultMap.get("discountCard"));
+    		totalPrice = totalPrice+(Double)resultMap.get("totalPrice");
 		}
 
+    	result.setDiscountCards(discountCards);
     	result.setOrderId(command.getOrderId());
     	result.setCreateTime(StringUtils.formateDate(command.getCreateTime()));
     	result.setMemberNo(command.getMemberId());
@@ -85,6 +91,9 @@ public class OrderApp {
     	result.setDiscounts(discountItemRepresentations);
     	result.setPayments(paymentRepresentations);
     	result.setItems(orderItemRepresentations);
+    	result.setTotalPrice(new BigDecimal(totalPrice));
+    	result.setTotalDiscountPrice(new BigDecimal(memberInfo.getBonusPoints()));
+    	result.setReceivables(new BigDecimal(totalPrice));
         return result;
     }
 }

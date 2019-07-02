@@ -1,16 +1,13 @@
 package com.coding.sales.trans;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
-import com.coding.sales.input.OrderCommand;
 import com.coding.sales.input.OrderItemCommand;
 import com.coding.sales.input.PaymentCommand;
 import com.coding.sales.members.MemberInfo;
@@ -69,8 +66,8 @@ public class TransAmtCalcServiceTest {
 			
 			TransAmtCalcService amtCalcService = new TransAmtCalcService();
 			
-			Double totprice = amtCalcService.updateMemberBonusPoints(memberInfo, product, paymentCommand, orderItemCommand,"9折券");
-			
+			Map<String, Object> map = amtCalcService.updateMemberBonusPoints(memberInfo, product, paymentCommand, orderItemCommand,"9折券");
+			Double totprice = (Double) map.get("totalprice");
 			assertTrue(totprice/(2*0.9*1380)==1);
 		}
 }

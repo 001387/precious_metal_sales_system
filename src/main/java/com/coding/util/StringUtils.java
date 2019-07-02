@@ -4,7 +4,8 @@ package com.coding.util;
  * @date  2019年7月2日
  */
 
-import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class StringUtils {
 
@@ -15,8 +16,17 @@ public class StringUtils {
 		return !isEmpty(string);
 	}
 	
-	public static Date formateDate(String yyyyMMdd) {
-		return null;
-		
+	public static java.util.Date formateDate(String yyyyMMdd) {
+		 SimpleDateFormat sDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //加上时间
+	        //必须捕获异常
+		 Date date = new Date();
+		 
+	        try {
+	            date= sDateFormat.parse(yyyyMMdd);
+	            System.out.println(date);
+	        } catch(Exception px) {
+	            px.printStackTrace();
+	        }
+		return date;
 	}
 }
