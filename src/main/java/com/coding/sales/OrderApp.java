@@ -67,6 +67,7 @@ public class OrderApp {
     		pCommand = paymentCommand;
 		}
     	Double totalPrice =     0.0;
+    	Double discountDouble = 0.0;
     	
     	List<OrderItemRepresentation> orderItemRepresentations = new ArrayList<OrderItemRepresentation>();
     	List<DiscountItemRepresentation> discountItemRepresentations = new ArrayList<DiscountItemRepresentation>();
@@ -83,6 +84,7 @@ public class OrderApp {
 			}
     		discountCards.add((String) resultMap.get("discountCard"));
     		totalPrice = totalPrice+(Double)resultMap.get("totalPrice");
+    		discountDouble = discountDouble+(Double)resultMap.get("discountDouble");
 		}
 
     	result.setDiscountCards(discountCards);
@@ -97,7 +99,7 @@ public class OrderApp {
     	result.setPayments(paymentRepresentations);
     	result.setItems(orderItemRepresentations);
     	result.setTotalPrice(new BigDecimal(totalPrice));
-    	result.setTotalDiscountPrice(new BigDecimal(memberInfo.getBonusPoints()));
+    	result.setTotalDiscountPrice(new BigDecimal(discountDouble));
     	result.setReceivables(new BigDecimal(totalPrice));
     	result.setMemberPointsIncreased(memberInfo.getBonusPoints()-oldBonusPoints);
         return result;

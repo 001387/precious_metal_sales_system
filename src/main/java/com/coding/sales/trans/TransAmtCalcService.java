@@ -63,6 +63,7 @@ public class TransAmtCalcService {
 			PaymentRepresentation paymentRepresentation = new PaymentRepresentation(paymentCommand.getType(), paymentCommand.getAmount()); 
 			DiscountItemRepresentation discountItemRepresentation = new DiscountItemRepresentation(product.getProductId(), product.getPrdName(), new BigDecimal(discountDouble));
 			
+			resultMap.put("discountDouble", discountDouble);
 			resultMap.put(CommonConstant.objectName.OBJECT_ORDERITEMREPRESENTATION, orderItemRepresentation);
 			resultMap.put(CommonConstant.objectName.OBJECT_PAYMENTREPRESENTATION, paymentRepresentation);
 			resultMap.put(CommonConstant.objectName.OBJECT_DISCOUNTITEMREPRESENTATION, discountItemRepresentation);
