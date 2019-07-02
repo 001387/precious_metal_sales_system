@@ -39,5 +39,10 @@ public class CommonConstant {
 		public static final String PRODUCT_DISCOUNT_ALLOW_95= "可使用95折打折券";
 	}
 	
-	
+	public class objectName{
+		
+		public static final String OBJECT_ORDERITEMREPRESENTATION= "orderItemRepresentation";
+		public static final String OBJECT_DISCOUNTITEMREPRESENTATION= "discountItemRepresentation";
+		public static final String OBJECT_PAYMENTREPRESENTATION= "paymentRepresentation";
+	}
 }

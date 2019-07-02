@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.coding.constant.CommonConstant;
 import com.coding.sales.input.OrderCommand;
 import com.coding.sales.input.OrderItemCommand;
 import com.coding.sales.input.PaymentCommand;
@@ -74,9 +75,9 @@ public class OrderApp {
     	
     	for (OrderItemCommand orderItemCommand : orderItemCommands) {
     		Map<String, Object> resultMap = transAmtCalcService.updateMemberBonusPoints(memberInfo, ProductsCache.products.get(orderItemCommand.getProduct()), pCommand, orderItemCommand, discount);
-    		orderItemRepresentations.add((OrderItemRepresentation) resultMap.get("orderItemRepresentation"));
-    		discountItemRepresentations.add((DiscountItemRepresentation) resultMap.get("discountItemRepresentation"));
-    		paymentRepresentations.add((PaymentRepresentation) resultMap.get("paymentRepresentation"));
+    		orderItemRepresentations.add((OrderItemRepresentation) resultMap.get(CommonConstant.objectName.OBJECT_ORDERITEMREPRESENTATION));
+    		discountItemRepresentations.add((DiscountItemRepresentation) resultMap.get(CommonConstant.objectName.OBJECT_DISCOUNTITEMREPRESENTATION));
+    		paymentRepresentations.add((PaymentRepresentation) resultMap.get(CommonConstant.objectName.OBJECT_PAYMENTREPRESENTATION));
     		if (((PaymentRepresentation)resultMap.get("paymentRepresentation")).getAmount().intValue()>0) {
     			paymentRepresentations.add((PaymentRepresentation) resultMap.get("paymentRepresentation"));
 			}

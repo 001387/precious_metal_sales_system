@@ -25,12 +25,6 @@ import com.coding.util.StringUtils;
  */
 public class TransAmtCalcService {
 	
-
-	public OrderRepresentation dealOrder(OrderCommand orderCommand) {
-		
-		return null;
-		
-	} 
 	
 	public String calculateTotalPrice(OrderItemCommand orderItemCommand, Product product) {
 		
@@ -69,9 +63,9 @@ public class TransAmtCalcService {
 			PaymentRepresentation paymentRepresentation = new PaymentRepresentation(paymentCommand.getType(), paymentCommand.getAmount()); 
 			DiscountItemRepresentation discountItemRepresentation = new DiscountItemRepresentation(product.getProductId(), product.getPrdName(), new BigDecimal(discountDouble));
 			
-			resultMap.put("orderItemRepresentation", orderItemRepresentation);
-			resultMap.put("paymentRepresentation", paymentRepresentation);
-			resultMap.put("discountItemRepresentation", discountItemRepresentation);
+			resultMap.put(CommonConstant.objectName.OBJECT_ORDERITEMREPRESENTATION, orderItemRepresentation);
+			resultMap.put(CommonConstant.objectName.OBJECT_PAYMENTREPRESENTATION, paymentRepresentation);
+			resultMap.put(CommonConstant.objectName.OBJECT_DISCOUNTITEMREPRESENTATION, discountItemRepresentation);
 			resultMap.put("discountCard", discount);
 			
 			resultMap.put("totalPrice", totalPrice);
