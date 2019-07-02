@@ -42,18 +42,21 @@ public class TransAmtCalcService {
 	 public Map<String, Object>  updateMemberBonusPoints(MemberInfo memberInfo, Product product, PaymentCommand paymentCommand, OrderItemCommand orderItemCommand, String discount){
 		    Map<String, Object> resultMap = new HashMap<String, Object>();
 			Double totalPrice = orderItemCommand.getAmount().doubleValue() * product.getPrice();
+			
+			totalPrice = product.fullSub(orderItemCommand.getAmount().intValue());
+			
 			Double discountDouble = 0.0;
 			String level = memberInfo.getLevel();
-			String discountCard = "";
 			if ( isCanDiscount(product, discount)) {
 				if (ProductItemConstant.ProdcutDiscount.DISCOUNT_90.equals(discount)) {
-					discountDouble = 0.9;
+					discountDouble = totalPrice*(1-0.9);
 					totalPrice = totalPrice * 0.9;
 				}else if (ProductItemConstant.ProdcutDiscount.DISCOUNT_95.equals(discount)) {
-					discountDouble = 0.95;
+					discountDouble = totalPrice*(1-0.95);
 					totalPrice = totalPrice * 0.95;
 				}
 			}
+			
 			Double points = 0.0;
 			if ( null == Members.memberCardLevel.get(level)) {
 				throw new IllegalArgumentException("卡级别错误");
@@ -61,7 +64,8 @@ public class TransAmtCalcService {
 			points = totalPrice * Members.memberCardLevel.get(level);
 			
 			memberInfo.addBonusProints(points);
-			OrderItemRepresentation orderItemRepresentation = new OrderItemRepresentation(product.getProductId(), product.getPrdName(), new BigDecimal(totalPrice), orderItemCommand.getAmount(), new BigDecimal(totalPrice));
+			
+			OrderItemRepresentation orderItemRepresentation = new OrderItemRepresentation(product.getProductId(), product.getPrdName(),new BigDecimal( product.getPrice()), orderItemCommand.getAmount(), new BigDecimal(totalPrice));
 			PaymentRepresentation paymentRepresentation = new PaymentRepresentation(paymentCommand.getType(), paymentCommand.getAmount()); 
 			DiscountItemRepresentation discountItemRepresentation = new DiscountItemRepresentation(product.getProductId(), product.getPrdName(), new BigDecimal(discountDouble));
 			

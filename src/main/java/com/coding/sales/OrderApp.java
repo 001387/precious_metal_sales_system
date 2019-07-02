@@ -62,20 +62,26 @@ public class OrderApp {
 		}
     	MemberInfo memberInfo = Members.getMemberInfo(command.getMemberId());
     	String oldLevel = memberInfo.getLevel();
+    	int oldBonusPoints = memberInfo.getBonusPoints();
     	PaymentCommand pCommand = null;
     	for (PaymentCommand paymentCommand : paymentCommands) {
     		pCommand = paymentCommand;
 		}
+    	Double totalPrice =     0.0;
+    	
     	List<OrderItemRepresentation> orderItemRepresentations = new ArrayList<OrderItemRepresentation>();
     	List<DiscountItemRepresentation> discountItemRepresentations = new ArrayList<DiscountItemRepresentation>();
     	List<PaymentRepresentation> paymentRepresentations = new ArrayList<PaymentRepresentation>();
     	List<String> discountCards = new ArrayList<String>();
-    	Double totalPrice =     0.0;
+    	
     	for (OrderItemCommand orderItemCommand : orderItemCommands) {
     		Map<String, Object> resultMap = transAmtCalcService.updateMemberBonusPoints(memberInfo, ProductsCache.products.get(orderItemCommand.getProduct()), pCommand, orderItemCommand, discount);
     		orderItemRepresentations.add((OrderItemRepresentation) resultMap.get("orderItemRepresentation"));
     		discountItemRepresentations.add((DiscountItemRepresentation) resultMap.get("discountItemRepresentation"));
     		paymentRepresentations.add((PaymentRepresentation) resultMap.get("paymentRepresentation"));
+    		if (((PaymentRepresentation)resultMap.get("paymentRepresentation")).getAmount().intValue()>0) {
+    			paymentRepresentations.add((PaymentRepresentation) resultMap.get("paymentRepresentation"));
+			}
     		discountCards.add((String) resultMap.get("discountCard"));
     		totalPrice = totalPrice+(Double)resultMap.get("totalPrice");
 		}
@@ -94,6 +100,7 @@ public class OrderApp {
     	result.setTotalPrice(new BigDecimal(totalPrice));
     	result.setTotalDiscountPrice(new BigDecimal(memberInfo.getBonusPoints()));
     	result.setReceivables(new BigDecimal(totalPrice));
+    	result.setMemberPointsIncreased(memberInfo.getBonusPoints()-oldBonusPoints);
         return result;
     }
 }

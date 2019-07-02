@@ -18,6 +18,28 @@ public class Product {
 	private String preferential;
 	
 	
+	public Double fullSub(int amount) {
+		Double totalPrice = price*amount;
+		if (ProductItemConstant.FullSubRule.FULL_3_SUB_1.equals(preferential) && amount>3) {
+			totalPrice = totalPrice - price;
+		}else if (ProductItemConstant.FullSubRule.FULL_2000_SUB_30.equals(preferential)) {
+			if (totalPrice>1000 &&totalPrice<2000) {
+				totalPrice = totalPrice - 10;
+			}else if (totalPrice>=20000) {
+				totalPrice = totalPrice - 30;
+			}
+		}else if (ProductItemConstant.FullSubRule.FULL_3000_SUB_350.equals(preferential)) {
+			if (totalPrice>1000 &&totalPrice<2000) {
+				totalPrice = totalPrice - 10;
+			}else if (totalPrice>=2000 & totalPrice<3000) {
+				totalPrice = totalPrice - 30;
+			}else if (totalPrice>=3000) {
+				totalPrice = totalPrice - 350;
+			}
+		}
+		return totalPrice;
+	}
+	
 	public String getPrdName() {
 		return prdName;
 	}
@@ -53,6 +75,7 @@ public class Product {
 		this.productId = prdNumber;
 		this.unit = unit;
 		this.price = price;
+		this.preferential = preferential;
 		if (ProductItemConstant.ProdcutDiscount.PRODUCT_DISCOUNT_ALLOW_9.equals(discount)) {
 			this.discount = "9折券";
 		}else if (ProductItemConstant.ProdcutDiscount.PRODUCT_DISCOUNT_ALLOW_95.equals(discount)) {
@@ -60,7 +83,6 @@ public class Product {
 		}else {
 			this.discount = discount;
 		}
-		this.preferential = preferential;
 	}
 	public Product() {
 		// TODO Auto-generated constructor stub

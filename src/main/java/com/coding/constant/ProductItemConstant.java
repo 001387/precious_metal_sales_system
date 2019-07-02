@@ -18,9 +18,9 @@ public class ProductItemConstant {
 	}
 	
 	public class FullSubRule{
-		public static final String FULL_3_SUB_1 = "1";
-		public static final String FULL_2000_SUB_30= "2";
-		public static final String FULL_3000_SUB_350= "3";
+		public static final String FULL_3_SUB_1 = "第3件半价，满3送1";
+		public static final String FULL_2000_SUB_30= "每满2000减30，每满1000减10";
+		public static final String FULL_3000_SUB_350= "每满3000元减350, 每满2000减30，每满1000减10";
 		
 	}
 	
