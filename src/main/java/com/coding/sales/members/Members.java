@@ -15,7 +15,7 @@ public class Members {
 		members.put("6236609999", new MemberInfo("张三", "钻石卡", "9230009999", 198860));
 	}
 	
-	public MemberInfo getMemberInfo(String cardId) {
+	public static MemberInfo getMemberInfo(String cardId) {
 		return members.get(cardId);
 	}
 
