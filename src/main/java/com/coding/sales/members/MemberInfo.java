@@ -1,11 +1,18 @@
-package com.codeing.sales.members;
+package com.coding.sales.members;
 
 public class MemberInfo {
+	private String name;
 	private String level;
 	private String cardId;
-	private String bonusPoints;
-	private String name;
+	private int bonusPoints;
 	
+	public MemberInfo(String name, String level, String cardId, int bonusPoints) {
+		this.name = name;
+		this.level = level;
+		this.cardId = cardId;
+		this.bonusPoints = bonusPoints;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -30,11 +37,11 @@ public class MemberInfo {
 		this.cardId = cardId;
 	}
 
-	public String getBonusPoints() {
+	public int getBonusPoints() {
 		return bonusPoints;
 	}
 
-	public void setBonusPoints(String bonusPoints) {
+	public void setBonusPoints(int bonusPoints) {
 		this.bonusPoints = bonusPoints;
 	}
 }
