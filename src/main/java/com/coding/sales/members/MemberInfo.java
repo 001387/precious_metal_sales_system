@@ -1,6 +1,6 @@
 package com.coding.sales.members;
 
-import com.coding.constant.ProductItemConstant;
+import com.coding.constant.CommonConstant;
 import com.sun.org.apache.regexp.internal.REUtil;
 
 public class MemberInfo {
@@ -54,13 +54,13 @@ public class MemberInfo {
 			return;
 		}
 		if (bonusPoints < 50000) {
-			setLevel(ProductItemConstant.MemberLevel.GOLD_CARD);
+			setLevel(CommonConstant.MemberLevel.GOLD_CARD);
 			return;
 		}
 		if (bonusPoints < 100000) {
-			setLevel(ProductItemConstant.MemberLevel.PLATINUM_CARD);
+			setLevel(CommonConstant.MemberLevel.PLATINUM_CARD);
 			return;
 		}
-		setLevel(ProductItemConstant.MemberLevel.DIANMONDS_CARD);
+		setLevel(CommonConstant.MemberLevel.DIANMONDS_CARD);
 	}
 }

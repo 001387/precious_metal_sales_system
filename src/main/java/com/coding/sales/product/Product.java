@@ -1,6 +1,6 @@
 package com.coding.sales.product;
 
-import com.coding.constant.ProductItemConstant;
+import com.coding.constant.CommonConstant;
 
 /**
  * 
@@ -20,15 +20,15 @@ public class Product {
 	
 	public Double fullSub(int amount) {
 		Double totalPrice = price*amount;
-		if (ProductItemConstant.FullSubRule.FULL_3_SUB_1.equals(preferential) && amount>3) {
+		if (CommonConstant.FullSubRule.FULL_3_SUB_1.equals(preferential) && amount>3) {
 			totalPrice = totalPrice - price;
-		}else if (ProductItemConstant.FullSubRule.FULL_2000_SUB_30.equals(preferential)) {
+		}else if (CommonConstant.FullSubRule.FULL_2000_SUB_30.equals(preferential)) {
 			if (totalPrice>1000 &&totalPrice<2000) {
 				totalPrice = totalPrice - 10;
 			}else if (totalPrice>=20000) {
 				totalPrice = totalPrice - 30;
 			}
-		}else if (ProductItemConstant.FullSubRule.FULL_3000_SUB_350.equals(preferential)) {
+		}else if (CommonConstant.FullSubRule.FULL_3000_SUB_350.equals(preferential)) {
 			if (totalPrice>1000 &&totalPrice<2000) {
 				totalPrice = totalPrice - 10;
 			}else if (totalPrice>=2000 & totalPrice<3000) {
@@ -76,9 +76,9 @@ public class Product {
 		this.unit = unit;
 		this.price = price;
 		this.preferential = preferential;
-		if (ProductItemConstant.ProdcutDiscount.PRODUCT_DISCOUNT_ALLOW_9.equals(discount)) {
+		if (CommonConstant.ProdcutDiscount.PRODUCT_DISCOUNT_ALLOW_9.equals(discount)) {
 			this.discount = "9折券";
-		}else if (ProductItemConstant.ProdcutDiscount.PRODUCT_DISCOUNT_ALLOW_95.equals(discount)) {
+		}else if (CommonConstant.ProdcutDiscount.PRODUCT_DISCOUNT_ALLOW_95.equals(discount)) {
 			this.discount = "95折券";
 		}else {
 			this.discount = discount;

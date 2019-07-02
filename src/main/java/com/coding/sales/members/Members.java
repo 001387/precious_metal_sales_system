@@ -2,7 +2,7 @@ package com.coding.sales.members;
 
 import java.util.HashMap;
 
-import com.coding.constant.ProductItemConstant;
+import com.coding.constant.CommonConstant;
 
 
 public class Members {
@@ -18,10 +18,10 @@ public class Members {
 	
 	public static HashMap<String, Double> memberCardLevel = new HashMap<String, Double>();
 	static {
-		memberCardLevel.put(ProductItemConstant.MemberLevel.COMMON_CARD, 1.0);
-		memberCardLevel.put(ProductItemConstant.MemberLevel.GOLD_CARD, 1.5);
-		memberCardLevel.put(ProductItemConstant.MemberLevel.PLATINUM_CARD, 1.8);
-		memberCardLevel.put(ProductItemConstant.MemberLevel.DIANMONDS_CARD, 2.0);
+		memberCardLevel.put(CommonConstant.MemberLevel.COMMON_CARD, 1.0);
+		memberCardLevel.put(CommonConstant.MemberLevel.GOLD_CARD, 1.5);
+		memberCardLevel.put(CommonConstant.MemberLevel.PLATINUM_CARD, 1.8);
+		memberCardLevel.put(CommonConstant.MemberLevel.DIANMONDS_CARD, 2.0);
 	}
 	
 	

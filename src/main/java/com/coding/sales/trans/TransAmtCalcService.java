@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.coding.constant.ProductItemConstant;
+import com.coding.constant.CommonConstant;
 import com.coding.sales.input.OrderCommand;
 import com.coding.sales.input.OrderItemCommand;
 import com.coding.sales.input.PaymentCommand;
@@ -48,10 +48,10 @@ public class TransAmtCalcService {
 			Double discountDouble = 0.0;
 			String level = memberInfo.getLevel();
 			if ( isCanDiscount(product, discount)) {
-				if (ProductItemConstant.ProdcutDiscount.DISCOUNT_90.equals(discount)) {
+				if (CommonConstant.ProdcutDiscount.DISCOUNT_90.equals(discount)) {
 					discountDouble = totalPrice*(1-0.9);
 					totalPrice = totalPrice * 0.9;
-				}else if (ProductItemConstant.ProdcutDiscount.DISCOUNT_95.equals(discount)) {
+				}else if (CommonConstant.ProdcutDiscount.DISCOUNT_95.equals(discount)) {
 					discountDouble = totalPrice*(1-0.95);
 					totalPrice = totalPrice * 0.95;
 				}

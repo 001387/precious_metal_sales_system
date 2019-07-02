@@ -5,7 +5,7 @@ package com.coding.constant;
  *@author yangshen
  * @date  2019年7月2日
  */
-public class ProductItemConstant {
+public class CommonConstant {
 	
 	
 	
@@ -38,5 +38,6 @@ public class ProductItemConstant {
 		public static final String PRODUCT_DISCOUNT_ALLOW_9= "可使用9折打折券";
 		public static final String PRODUCT_DISCOUNT_ALLOW_95= "可使用95折打折券";
 	}
+	
 	
 }
