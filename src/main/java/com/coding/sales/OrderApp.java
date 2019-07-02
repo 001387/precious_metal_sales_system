@@ -81,9 +81,9 @@ public class OrderApp {
     		if (((PaymentRepresentation)resultMap.get(CommonConstant.objectName.OBJECT_PAYMENTREPRESENTATION)).getAmount().intValue()>0) {
     			paymentRepresentations.add((PaymentRepresentation) resultMap.get(CommonConstant.objectName.OBJECT_PAYMENTREPRESENTATION));
 			}
-    		discountCards.add((String) resultMap.get(CommonConstant.objectName.OBJECT_DISCOUNTDOUBLE));
+    		discountCards.add((String) resultMap.get("discountCard"));
     		totalPrice = totalPrice+(Double)resultMap.get("totalPrice");
-    		discountDouble = discountDouble+(Double)resultMap.get("discountDouble");
+    		discountDouble = discountDouble+(Double)resultMap.get(CommonConstant.objectName.OBJECT_DISCOUNTDOUBLE);
 		}
 
     	result.setDiscountCards(discountCards);
