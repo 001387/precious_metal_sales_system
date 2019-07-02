@@ -38,7 +38,11 @@ public class OrderCommand {
         this.discounts = discounts;
     }
 
-    public String getMemberId() {
+    public OrderCommand() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getMemberId() {
         return memberId;
     }
 

@@ -31,4 +31,12 @@ public class ProductItemConstant {
 		public static final String DIANMONDS_CARD= "钻石卡";
 	}
 	
+	public class ProdcutDiscount{
+		
+		public static final String DISCOUNT_95= "95折券";
+		public static final String DISCOUNT_90= "9折券";
+		public static final String PRODUCT_DISCOUNT_ALLOW_9= "可使用9折打折券";
+		public static final String PRODUCT_DISCOUNT_ALLOW_95= "可使用95折打折券";
+	}
+	
 }

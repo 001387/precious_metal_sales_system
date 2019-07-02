@@ -1,5 +1,7 @@
 package com.coding.sales.product;
 
+import com.coding.constant.ProductItemConstant;
+
 /**
  * 
  *@author yangshen
@@ -51,7 +53,13 @@ public class Product {
 		this.productId = prdNumber;
 		this.unit = unit;
 		this.price = price;
-		this.discount = discount;
+		if (ProductItemConstant.ProdcutDiscount.PRODUCT_DISCOUNT_ALLOW_9.equals(discount)) {
+			this.discount = "9折券";
+		}else if (ProductItemConstant.ProdcutDiscount.PRODUCT_DISCOUNT_ALLOW_95.equals(discount)) {
+			this.discount = "95折券";
+		}else {
+			this.discount = discount;
+		}
 		this.preferential = preferential;
 	}
 	public Product() {

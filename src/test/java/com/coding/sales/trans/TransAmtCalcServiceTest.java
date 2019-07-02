@@ -2,11 +2,15 @@ package com.coding.sales.trans;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
+import com.coding.sales.input.OrderCommand;
 import com.coding.sales.input.OrderItemCommand;
 import com.coding.sales.input.PaymentCommand;
 import com.coding.sales.members.MemberInfo;
@@ -39,7 +43,6 @@ public class TransAmtCalcServiceTest {
 			OrderItemCommand orderItemCommand = new OrderItemCommand("001001", new BigDecimal(2.0));
 			
 			PaymentCommand paymentCommand = new PaymentCommand("余额支付", new BigDecimal(9800));
-			
 			Product product = ProductsCache.products.get("001001");
 			
 			MemberInfo memberInfo =  Members.getMemberInfo("6236609999");
@@ -47,8 +50,27 @@ public class TransAmtCalcServiceTest {
 			
 			TransAmtCalcService amtCalcService = new TransAmtCalcService();
 			
-			MemberInfo resultMemberInfo = amtCalcService.updateMemberBonusPoints(memberInfo,product,paymentCommand,orderItemCommand);
 			
-			assertNotEquals(bonusPoints, resultMemberInfo.getBonusPoints());
+			 amtCalcService.updateMemberBonusPoints(memberInfo,product,paymentCommand,orderItemCommand,"");
+			
+			assertTrue(memberInfo.getBonusPoints()>bonusPoints);
+		}
+		
+		@Test
+		public void should_have_a_discount_when_but_product_use_the_discount_coupon() {
+			
+			OrderItemCommand orderItemCommand = new OrderItemCommand("001002", new BigDecimal(2.0));
+			
+			PaymentCommand paymentCommand = new PaymentCommand("余额支付", new BigDecimal(9800));
+			
+			Product product = ProductsCache.products.get("001002");
+			
+			MemberInfo memberInfo =  Members.getMemberInfo("6236609999");
+			
+			TransAmtCalcService amtCalcService = new TransAmtCalcService();
+			
+			Double totprice = amtCalcService.updateMemberBonusPoints(memberInfo, product, paymentCommand, orderItemCommand,"9折券");
+			
+			assertTrue(totprice/(2*0.9*1380)==1);
 		}
 }
