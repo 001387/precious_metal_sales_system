@@ -13,7 +13,7 @@ public class Product {
 	private String productId;
 	private int unit;
 	private String unitName;
-	private BigDecimal price;
+	private Double price;
 	private String discount;
 	private String preferential;
 	
@@ -54,19 +54,16 @@ public class Product {
 	public void setDiscount(String discount) {
 		this.discount = discount;
 	}
-	public BigDecimal getPrice() {
-		return price;
-	}
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
 	public Product(String prdName, String prdNumber, int unit, Double price, String discount,String preferential) {
 		this.prdName = prdName;
 		this.productId = prdNumber;
 		this.unit = unit;
-		this.price = new BigDecimal(price);
+		this.price = price;
 		this.discount = discount;
 		this.preferential = preferential;
+	}
+	public Product() {
+		// TODO Auto-generated constructor stub
 	}
 	
 }
