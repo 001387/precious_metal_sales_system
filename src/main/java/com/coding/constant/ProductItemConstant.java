@@ -1,7 +1,5 @@
 package com.coding.constant;
 
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *@author yangshen
@@ -13,10 +11,10 @@ public class ProductItemConstant {
 	
 	
 	public class ProductUnit{
-		public static final String PRD_UNIT_VOLUM = "1";
-		public static final String PRD_UNIT_BOX = "2";
-		public static final String PRD_UNIT_A = "3";
-		public static final String PRD_UNIT_SET = "4";
+		public static final int PRD_UNIT_VOLUM = 1;
+		public static final int PRD_UNIT_BOX = 2;
+		public static final int PRD_UNIT_A = 3;
+		public static final int PRD_UNIT_SET = 4;
 	}
 	
 	public class FullSubRule{
