@@ -5,6 +5,7 @@ import com.coding.constant.ProductItemConstant;
 import com.coding.sales.input.OrderItemCommand;
 import com.coding.sales.input.PaymentCommand;
 import com.coding.sales.members.MemberInfo;
+import com.coding.sales.members.Members;
 import com.coding.sales.product.Product;
 /**
  *@author yangshen
@@ -25,16 +26,11 @@ public class TransAmtCalcService {
 			
 			String level = memberInfo.getLevel();
 			Double points = 0.0;
-			if (ProductItemConstant.MemberLevel.COMMON_CARD.equals(level)) {
-				points = totalPrice*1.0;
-			}else if (ProductItemConstant.MemberLevel.GOLD_CARD.equals(level)) {
-				points = totalPrice*1.5;
-			}else if (ProductItemConstant.MemberLevel.PLATINUM_CARD.equals(level)) {
-				points = totalPrice*1.8;
-				
-			}else if (ProductItemConstant.MemberLevel.DIANMONDS_CARD.equals(level)) {
-				points = totalPrice*2.0;
+			if ( null == Members.memberCardLevel.get(level)) {
+				throw new IllegalArgumentException("卡级别错误");
 			}
+			points = totalPrice * Members.memberCardLevel.get(level);
+			
 			memberInfo.addBonusProints(points);
 			return memberInfo;
 			
