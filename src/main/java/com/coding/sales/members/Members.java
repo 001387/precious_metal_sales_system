@@ -10,9 +10,9 @@ public class Members {
 	
 	static{
 		members.put("6236609999", new MemberInfo("马丁", "普卡", "6236609999", 9860));
-		members.put("6236609999", new MemberInfo("王立", "金卡", "6630009999", 48860));
-		members.put("6236609999", new MemberInfo("李想", "白金卡", "8230009999", 98860));
-		members.put("6236609999", new MemberInfo("张三", "钻石卡", "9230009999", 198860));
+		members.put("6630009999", new MemberInfo("王立", "金卡", "6630009999", 48860));
+		members.put("8230009999", new MemberInfo("李想", "白金卡", "8230009999", 98860));
+		members.put("9230009999", new MemberInfo("张三", "钻石卡", "9230009999", 198860));
 	}
 	
 	
