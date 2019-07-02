@@ -67,7 +67,7 @@ public class TransAmtCalcServiceTest {
 			TransAmtCalcService amtCalcService = new TransAmtCalcService();
 			
 			Map<String, Object> map = amtCalcService.dealProductTrans(memberInfo, product, paymentCommand, orderItemCommand,"9折券");
-			Double totprice = (Double) map.get("totalprice");
+			Double totprice = (Double) map.get("totalPrice");
 			assertTrue(totprice/(2*0.9*1380)==1);
 		}
 }
