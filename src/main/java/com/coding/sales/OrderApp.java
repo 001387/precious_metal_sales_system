@@ -74,7 +74,9 @@ public class OrderApp {
     	List<String> discountCards = new ArrayList<String>();
     	
     	for (OrderItemCommand orderItemCommand : orderItemCommands) {
+    		
     		Map<String, Object> resultMap = transAmtCalcService.dealProductTrans(memberInfo, ProductsCache.products.get(orderItemCommand.getProduct()), pCommand, orderItemCommand, discount);
+    		
     		orderItemRepresentations.add((OrderItemRepresentation) resultMap.get(CommonConstant.objectName.OBJECT_ORDERITEMREPRESENTATION));
     		discountItemRepresentations.add((DiscountItemRepresentation) resultMap.get(CommonConstant.objectName.OBJECT_DISCOUNTITEMREPRESENTATION));
     		paymentRepresentations.add((PaymentRepresentation) resultMap.get(CommonConstant.objectName.OBJECT_PAYMENTREPRESENTATION));
