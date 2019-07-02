@@ -56,7 +56,7 @@ public class FileUtils {
                 bufferedWriter.write(line);
                 bufferedWriter.newLine();
             }
-
+            bufferedWriter.flush();
             bufferedWriter.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
